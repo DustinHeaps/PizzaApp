@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAddress } from "../../services/apiGeocoding";
+import { getAddress } from '../../services/ApiGeocoding';
 import { RootState } from "../../store";
 import { UserType } from "../../types";
 
