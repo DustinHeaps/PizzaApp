@@ -1,0 +1,45 @@
+{
+  "name": "pizza-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.12.0",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.35.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.2",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@types/redux-mock-store": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "happy-dom": "^9.20.3",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.24",
+    "redux-mock-store": "^1.5.4",
+    "remove": "^0.1.5",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vitest": "^0.32.2"
+  }
+}
