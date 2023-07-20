@@ -1,4 +1,4 @@
-import { useFetcher } from "react-router-dom";
+import { ActionFunctionArgs, useFetcher } from "react-router-dom";
 import Button from "../../components/Button";
 import { updateOrder } from "../../services/ApiRestaurant";
 
@@ -16,8 +16,8 @@ export default UpdateOrder;
 
 
 
-export  const action = async({ params }: any) => {
+export  const action = async({ params }: ActionFunctionArgs) => {
   const data = { priority: true };
-  await updateOrder(params.orderId, data);
+  await updateOrder(params.orderId as string, data);
   return null;
 }

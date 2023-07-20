@@ -2,16 +2,20 @@
 
 import OrderItem from "./OrderItem";
 
-import { useFetcher, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  useFetcher,
+  useLoaderData,
+} from "react-router-dom";
 import { getOrder } from "../../services/ApiRestaurant";
 import {
   calcMinutesLeft,
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
-import { OrderItemType, OrderType } from "../../types";
+import { MenuItemType, OrderItemType, OrderType } from "../../types";
 import { useEffect } from "react";
-import UpdateOrder from './UpdateOrder';
+import UpdateOrder from "./UpdateOrder";
 
 const Order = () => {
   const order = useLoaderData() as OrderType;
@@ -32,7 +36,7 @@ const Order = () => {
     priorityPrice,
     orderPrice,
     estimatedDelivery,
-    cart
+    cart,
   } = order;
 
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
@@ -72,8 +76,9 @@ const Order = () => {
             isLoadingIngredients={fetcher.state === "loading"}
             key={i}
             ingredients={
-              fetcher?.data?.find((el: any) => el.id === item.pizzaId)
-                ?.ingredients ?? []
+              fetcher?.data?.find(
+                (menuItem: MenuItemType) => menuItem.id === item.pizzaId
+              )?.ingredients ?? []
             }
           />
         ))}
@@ -97,8 +102,8 @@ const Order = () => {
   );
 };
 
-export async function loader({ params }: any) {
-  const order = await getOrder(params.orderId);
+export async function loader({ params }: LoaderFunctionArgs) {
+  const order = await getOrder(params.orderId as string);
   return order;
 }
 

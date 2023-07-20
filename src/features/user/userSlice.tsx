@@ -3,7 +3,7 @@ import { getAddress } from '../../services/ApiGeocoding';
 import { RootState } from "../../store";
 import { UserType } from "../../types";
 
-const getPosition = async () => {
+const getPosition = async (): Promise<GeolocationPosition>  => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
@@ -11,7 +11,7 @@ const getPosition = async () => {
 
 export const fetchAddress = createAsyncThunk("user/fetchAddress", async () => {
   // 1) We get the user's geolocation position
-  const positionObj: any = await getPosition();
+  const positionObj = await getPosition();
 
   const position = {
     latitude: positionObj.coords.latitude,
@@ -37,8 +37,8 @@ const initialState: UserState = {
     username: "",
     status: "idle",
     position: {
-      latitude: "",
-      longitude: "",
+      latitude: undefined,
+      longitude: undefined,
     },
     address: "",
     error: "",

@@ -2,7 +2,7 @@ export type MenuItemType = {
   id: number;
   name: string;
   unitPrice: number;
-  ingredients: any;
+  ingredients: string[];
   soldOut: boolean;
   imageUrl: string;
 };
@@ -30,6 +30,18 @@ export type OrderItemType = {
   pizzaId: number;
 };
 
+type Item = {
+  name: string;
+  quantity: number;
+  totalPrice: number;
+};
+
+export type CartItem = {
+  pizzaId: number;
+  unitPrice: number;
+} & Item;
+
+
 export type OrderType = {
   id: number;
   status: string;
@@ -37,8 +49,13 @@ export type OrderType = {
   priorityPrice: number;
   orderPrice: number;
   estimatedDelivery: string;
-  cart: any;
+  cart: CartItem[];
+  customer: string;
+  phone: string;
+  address: string;
+  position: string;
 };
+
 
 export type CompletedOrderType = {
   address: string;
@@ -49,13 +66,16 @@ export type CompletedOrderType = {
   priority: boolean;
 };
 
+export type GeoPosition = {
+  latitude: number | undefined;
+  longitude: number | undefined;
+};
+
+
 export type UserType = {
   username: string;
   status: string;
-  position: {
-    latitude: string;
-    longitude: string;
-  };
+  position: GeoPosition
   address: string;
   error: string;
 };

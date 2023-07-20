@@ -1,4 +1,5 @@
 const API_URL = import.meta.env.VITE_API_KEY;
+import { OrderType } from "../types";
 
 export  const getMenu = async() => {
   const res = await fetch(`${API_URL}/menu`);
@@ -10,7 +11,7 @@ export  const getMenu = async() => {
   return data;
 }
 
-export const getOrder = async(id: number) => {
+export const getOrder = async(id: string) => {
   const res = await fetch(`${API_URL}/order/${id}`);
   if (!res.ok) throw Error(`Couldn't find order #${id}`);
 
@@ -18,7 +19,7 @@ export const getOrder = async(id: number) => {
   return data;
 }
 
-export const createOrder = async(newOrder: any) => {
+export const createOrder = async(newOrder: Partial<OrderType>) => {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
@@ -36,7 +37,7 @@ export const createOrder = async(newOrder: any) => {
   }
 }
 
-export const updateOrder = async(id: number, updateObj: any) => {
+export const updateOrder = async(id: string, updateObj: object) => {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: "PATCH",

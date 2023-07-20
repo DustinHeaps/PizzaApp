@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import EmptyCart from "../cart/EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
-import store from "../../store";
+import store, { useAppDispatch } from "../../store";
 import { formatCurrency } from "../../utils/helpers";
 import { fetchAddress, getUser } from "../user/userSlice";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const CreateOrder = () => {
   const isSubmitting = navigation.state === "submitting";
 
   const formErrors = useActionData() as { phone: string };
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
   const cart = useSelector(getCart);
   const totalCartPrice = useSelector(getTotalCartPrice);
@@ -99,7 +99,7 @@ const CreateOrder = () => {
             type='checkbox'
             name='priority'
             id='priority'
-            value={withPriority as any}
+            value={String(withPriority)}
             onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor='priority' className='font-medium'>
