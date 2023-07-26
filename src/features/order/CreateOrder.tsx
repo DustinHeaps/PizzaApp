@@ -2,7 +2,7 @@ import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/ApiRestaurant";
 import Button from "../../components/Button";
 import EmptyCart from "../cart/EmptyCart";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import store, { useAppDispatch } from "../../store";
 import { formatCurrency } from "../../utils/helpers";
@@ -143,7 +143,9 @@ export const action = async ({ request }: { request: Request }) => {
     position: data.position as string,
   };
 
-  const errors: any = {};
+  const errors = {
+    phone: ''
+  };
 
   const onChangeValidate = (phoneNumber: string) => {
     if (!phoneNumber.match("[0-9]{10}")) {
