@@ -143,10 +143,8 @@ export const action = async ({ request }: { request: Request }) => {
     position: data.position as string,
   };
 
-  const errors = {
-    phone: ''
-  };
-
+  const errors: any = {};
+  
   const onChangeValidate = (phoneNumber: string) => {
     if (!phoneNumber.match("[0-9]{10}")) {
       errors.phone =
